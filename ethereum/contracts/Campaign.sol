@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.4;
+pragma solidity ^0.8.2;
 
 contract Campaign{
     
@@ -61,6 +61,6 @@ contract Campaign{
         require(!req.complete,"Request is already completed!");
         require(req.cntApprovals >= (cntApprovers/2),"You don't have enough votes to go on with this Request!");
         req.complete = true;    
-        req.recipient.transfer(req.value);
+        payable(req.recipient).transfer(req.value);
     }
 }
